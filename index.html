@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#e8eaee">
+<title>Buku Tamu Digital — PT Samator Gas Industri - Batam</title>
+<style>
+html,body{margin:0;height:100%;background:#e8eaee;font-family:"Plus Jakarta Sans","Segoe UI",system-ui,sans-serif}
+@media(prefers-color-scheme:dark){html,body{background:#09090a}}
+iframe{position:fixed;inset:0;width:100%;height:100%;border:0;opacity:0;transition:opacity .35s}
+iframe.ok{opacity:1}
+#ld{position:fixed;inset:0;display:grid;place-items:center;transition:opacity .35s}
+#ld.hide{opacity:0;pointer-events:none}
+#ld i{width:34px;height:34px;border-radius:50%;border:3px solid rgba(10,108,196,.18);border-top-color:#0a6cc4;animation:s .8s linear infinite}
+@keyframes s{to{transform:rotate(360deg)}}
+#fb{position:fixed;left:0;right:0;bottom:24px;text-align:center;font-size:13px;color:#5f6670;display:none}
+#fb a{color:#0a6cc4;font-weight:600}
+</style>
+</head>
+<body>
+<div id="ld"><i aria-hidden="true"></i></div>
+<p id="fb">Halaman belum termuat. <a id="fl" href="#">Buka langsung</a></p>
+<iframe id="app" title="Buku Tamu Digital"
+  allow="camera; microphone; geolocation; clipboard-write; fullscreen"
+  referrerpolicy="strict-origin-when-cross-origin"></iframe>
+<script>
+/* ISI DENGAN URL WEB APP (…/exec) milik Anda. Contoh domain Workspace:
+   https://script.google.com/a/macros/NAMA-DOMAIN/s/DEPLOYMENT_ID/exec */
+var EXEC_URL = 'https://script.google.com/macros/s/AKfycbwssh8PYdHL_RKBsCP7FV-eT9r1Uz1NASs7LdT6Ubp0IDKnIcU6NYBa-SOkqTM5z7OP/exec';
+
+(function(){
+  var f=document.getElementById('app'),ld=document.getElementById('ld'),fb=document.getElementById('fb'),fl=document.getElementById('fl');
+  /* teruskan parameter (?t=token, ?view=admin, ?lap=…) ke aplikasi */
+  var url=EXEC_URL.replace(/[?#].*$/,'')+location.search+location.hash;
+  fl.href=url;
+  var done=false;
+  f.addEventListener('load',function(){done=true;f.classList.add('ok');ld.classList.add('hide');fb.style.display='none';});
+  setTimeout(function(){if(!done)fb.style.display='block';},12000);
+  if(EXEC_URL.indexOf('GANTI_')===0){ld.innerHTML='<p style="font-size:14px;color:#5f6670;max-width:320px;text-align:center">Isi <b>EXEC_URL</b> di index.html dengan URL web app Anda.</p>';return;}
+  f.src=url;
+})();
+</script>
+</body>
+</html>
